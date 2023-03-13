@@ -1,9 +1,10 @@
 let num = Math.floor(Math.random()*100)+1;
 const button = document.getElementById("submitbtn");
+let inputbox = document.getElementById("numInput");
 let guess = 1;
 
 const checkGuess = () => {
-    let input = document.getElementById("numInput").value;
+    let input = inputbox.value;
     let answer = document.getElementById("guess");
     let tries = document.getElementById("tries");
     if(input==num){
@@ -24,6 +25,20 @@ const checkGuess = () => {
     }
 }
 
+const checkNum = () => {
+    let input = inputbox.value;
+    if(input<1 || input>100){
+        button.innerText = "Incorrect Value";
+        button.disabled = true;
+    }
+    else{
+        button.innerText = "Submit";
+        button.disabled = false;
+    }
+    
+}
+
+inputbox.addEventListener("change",checkNum);
 button.addEventListener("click",checkGuess);
 
 

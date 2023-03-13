@@ -4,35 +4,34 @@
         <title>Random Number Guess</title>
         <script>
             var rand = Math.floor(Math.random() * 10)+1;
-            var guesses = 5;
+            var guesses = 3;
             flag=0;
+
             function check(){
+
                 let number = document.getElementById("no").value;
                 
-                
-                    if(number > rand){
-                        document.getElementById("result").innerHTML+="<br/>High!";
-                        console.log(guesses);
-                    }
-                    else if(number < rand){
-                        document.getElementById("result").innerHTML+="<br/>Low!";
-                        console.log(guesses);
-                    }
-                    else{
-                        document.getElementById("result").innerHTML+="<br/>Correct!";
-                        document.getElementById("no").disabled = true;
-                        flag=1;
-                    }
-
-                    guesses--;
-
-                    if (guesses == 0 && flag==0){
-                        result.innerHTML += "<br>Game over. The correct number was " + rand + "!!";
-                        document.getElementById("no").disabled = true;
-                    }
-
-                    document.getElementById("guessesRemaining").innerHTML = "Guesses remaining: " + guesses;
+                if(number > rand){
+                    document.getElementById("result").innerHTML+="<br/>High!";
+                    console.log(guesses);
                 }
+                else if(number < rand){
+                    document.getElementById("result").innerHTML+="<br/>Low!";
+                    console.log(guesses);
+                }
+                else{
+                    document.getElementById("result").innerHTML+="<br/>Correct!";
+                    document.getElementById("no").disabled = true;
+                    flag=1;
+                }
+                guesses--;
+                if (guesses == 0 && flag==0){
+                    result.innerHTML += "<br>Game over. The correct number was " + rand + "!!";
+                    document.getElementById("no").disabled = true;
+                }
+                document.getElementById("guessesRemaining").innerHTML = "Guesses remaining: " + guesses;
+
+            }
         </script>
         <style>
             .container{

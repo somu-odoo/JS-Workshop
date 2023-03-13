@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fetching API</title>
+        <script>
+            
+            const url = "https://fakestoreapi.com/products";
+            const itemsPerPage = 5;  // Change this to adjust the number of items per page
+            let currentPage = 1;
+            let data = [];
+
+            async function getapi(url) {
+    
+                // Storing response
+                const response = await fetch(url);
+                
+                // Storing data in form of JSON
+                data = await response.json();
+                console.log(data);
+                if (response) {
+                    hideloader();
+                }
+                show(currentPage);
+            }
+
+            getapi(url);
+                
+            // Function to hide the loader
+            function hideloader() {
+                document.getElementById('loading').style.display = 'none';
+            }
+
+            function show(pageNumber) {
+                let start = (pageNumber - 1) * itemsPerPage;
+                let end = start + itemsPerPage;
+                let pageData = data.slice(start, end);
+
+                let tab = 
+                    `<tr>
+                    <th>Id</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Rating</th>
+                    <th>Count</th>
+                    <th>Image</th>
+                    </tr>`;
+                
+                // Loop to access all rows 
+
+                pageData.forEach(r => {
+                        
+                    tab += `<tr> 
+                    <td>${r.id} </td>
+                    <td>${r.category}</td>
+                    <td>${r.price}</td> 
+                    <td style="text-align:left">${r.description}</td>
+                    <td>${r.rating.rate} </td>
+                    <td>${r.rating.count} </td>
+                    <td><img src="${r.image}" alt="product image" width="100" height="100"></td>
+                </tr>`;
+
+                });
+
+                document.getElementById("products").innerHTML = tab;
+            }
+
+            function nextPage() {
+                currentPage++;
+                if (currentPage > Math.ceil(data.length / itemsPerPage)) {
+                    currentPage = 1;
+                }
+                show(currentPage);
+            }
+                        
+        </script>
+        <style>
+            table,td{
+                border: 2px solid black;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            tr:hover{
+                background-color: rgb(192, 233, 249);
+            }
+            #next{
+                margin-top: 20px;
+                margin-left: 800px;
+                height: 40px;
+                width: 80px;
+                border-radius: 10px;
+            }
+            #next:hover{
+                background-color: rgb(18, 137, 153);
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" 
+                 role="status" id="loading">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <h1>Registered Products</h1>
+        <!-- table for showing data -->
+        <table id="products"></table>
+        <button onclick="nextPage()" id="next">Next</button>
+    </body>
+</html>

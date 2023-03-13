@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>
+        Guess The Number
+    </title>
+</head>
+
+<body style="font-size: large;">
+    <div style="margin-top: 100px;">
+        <center>
+            <div>Enter number Between 1 to 5 </div><br />
+            <div>Guess the number : <input type="number" id="myText" min="1" max="5"></div><br /><br />
+            <div id="rightnumber" style="font-size: large;">Totel Left Test  <div id="totelleft">life</div></div>
+        </center>
+    </div>
+    <script>
+        const RightNumber = Math.floor(Math.random() * 6) + 1;
+        let toteltest = 0;
+        let totellife =5;
+        document.getElementById("totelleft").innerHTML = totellife;
+        console.log(RightNumber);
+        document.getElementById("myText").onchange = () => {
+            if ((document.getElementById("myText").value) == RightNumber) {
+                document.getElementById("rightnumber").innerHTML = "<p style='color: blue;'>You Select Right Number</p>";
+                document.getElementById("myText").readOnly = true;
+            }
+            else {
+                if(toteltest == totellife){
+                    document.getElementById("myText").readOnly = true;
+                    document.getElementById("rightnumber").innerHTML = "<p style='color: red;'>You Rich Your Max Limit</p>";
+                }
+                else{
+                    toteltest++;
+                    document.getElementById("totelleft").innerHTML = totellife - toteltest;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

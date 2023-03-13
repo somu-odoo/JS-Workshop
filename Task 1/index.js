@@ -1,5 +1,4 @@
 let randomNumber, counter = 0
-let result = document.getElementById("result")
 let h1 = document.getElementById("number")
 let inputField = document.getElementById("input")
 

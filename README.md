@@ -8,3 +8,5 @@ In order to submit your response, do the following
 5. Once done, create a PR for the same, it will automatically create a PR in this repository.
 
 You can contact me on discord if you face any difficulties.
+
+https://docs.google.com/document/d/10tq1pOQdzkeTNZ8ZilYJGf4YoHdXvQJm_p76UWjBHmY/edit?usp=sharing

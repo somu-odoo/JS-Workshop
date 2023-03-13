@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            div {text-align:center;}
+        </style>
+    </head>
+  
+  <body>
+        <div class="centered-element">
+        <form>
+            <h1 >Guess a number </h1>           
+
+            <h2 id="result"></h2>
+            <p>Number of trials:</p>
+            <p id="trial"></p>
+            <input id="num" type="text" onchange="guessTheNumber()"/>
+            
+            <script>
+                let x = Math.floor((Math.random() * 10) + 1);
+                let count=0;
+                
+                function guessTheNumber(){
+                    count++;
+                    let num=document.getElementById("num").value;
+                    let result=document.getElementById("result")
+
+                    console.log(x)
+                    console.log(num)
+                    if(num < x){
+                    result.innerHTML="The guessed value is lower."
+                    }
+                    else if(num > x){
+                    result.innerHTML="The guessed value is higher"
+
+                    }
+                    else{
+                    result.innerHTML="Correct Value"
+                    result.style.color='green'
+                    }
+                document.getElementById("trial").innerHTML =count;
+
+                }
+            </script>
+        </form>
+        </div>
+  </body>
+
+</html>

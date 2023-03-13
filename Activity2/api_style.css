@@ -1,0 +1,14 @@
+img{
+    width: 200px;
+}
+
+#container{
+
+    color: brown;
+}
+
+.card{
+    width: 300px;
+    border: 2px solid red;
+    padding: 10px;
+}

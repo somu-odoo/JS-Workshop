@@ -2,6 +2,7 @@ const fetchbtn = document.getElementById("fetchbtn");
 const nextbtn = document.getElementById("nextbtn");
 const prevbtn = document.getElementById("prevbtn");
 let card_container = document.getElementById("card_container");
+let card_container2 = document.getElementById("card_container2");
 let i = 0;
 let i_lim = 10;
 let data;
@@ -12,10 +13,11 @@ async function apiCall() {
 }
 const showdata = (data) => {
     card_container.innerHTML = "";
+    card_container2.innerHTML = "";
     for(j=i;j<i_lim;j++)
     {   
         let card = document.createElement("div");
-        card.className = "card";
+        card.className = "card m-3";
         card.style = "width: 18rem;";
         let img = document.createElement("img");
         img.setAttribute("src",data[j]["image"]);
@@ -31,7 +33,12 @@ const showdata = (data) => {
         body.appendChild(price);
         card.appendChild(img);
         card.appendChild(body);
-        card_container.appendChild(card);
+        if((j-i)>Math.floor((i_lim-i)/2)-1){
+            card_container2.appendChild(card);
+        }
+        else{
+            card_container.appendChild(card);
+        }
     }
 }
 

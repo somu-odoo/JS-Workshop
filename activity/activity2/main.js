@@ -1,5 +1,6 @@
 const container = document.getElementById("row")
-const btn = document.getElementById("btn")
+const prevBtn = document.getElementById("prev-btn")
+const nextBtn = document.getElementById("next-btn")
 let randomNum = Math.floor(Math.random() * 5);
 let count = 10;
 let i = 0;
@@ -11,17 +12,28 @@ async function Demo(){
 }
 
 Demo().then((result) => {
-    renderCards(result);
+    renderCards(result, i);
 });
 
-btn.addEventListener('click', () => {
+prevBtn.addEventListener('click', () => {
+    count = 10;
+    i = 0;
     Demo().then((result) => {
-        renderCards(result, i = 10)
+        renderCards(result, i)
     }) 
 })
 
-function renderCards(result){
-    for(let i=0; i<result.length; i++){
+nextBtn.addEventListener('click', () => {
+    count = 20;
+    i = 10;
+    Demo().then((result) => {
+        renderCards(result, i)
+    }) 
+})
+
+function renderCards(result, i){
+    container.innerHTML = '';
+    for(i; i<count; i++){
         let card = `
         <div class="col-md-3 my-2">
             <div class="card" id="card" style="width: 18rem;">

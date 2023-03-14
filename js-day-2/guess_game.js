@@ -1,7 +1,7 @@
 const {Component , mount , xml , useState, useEnv, reactive} = owl;
 
 const comp = Math.floor(Math.random()*10)+1;
-let count = 2;
+let count = 5;
 
 const finalData = () => {
     const guess = useEnv();

@@ -8,6 +8,18 @@ const finalData = () => {
     const guess = useEnv();
     return useState(guess.store);
 }
+class Result extends Component{
+    static template = xml`
+    <div>
+      <div>Your Count: <t t-esc="this.user.getYourCount()" /></div>
+      <div>Computer Count: <t t-esc="this.user.getCompCount()"/></div> 
+    </div>`
+  ;
+
+  setup() {
+    this.user = finalData();
+  }
+}
 
 class Input extends Component {
     static template = xml`

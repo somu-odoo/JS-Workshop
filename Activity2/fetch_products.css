@@ -1,0 +1,14 @@
+#products {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1px;
+    padding: 2px;
+  }
+  
+  #products > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 2px;
+    font-size: 15px;
+  }
+    

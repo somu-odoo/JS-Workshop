@@ -4,6 +4,9 @@ async function funcName(url) {
     var data = await response.json();
     console.log(data)
     show(data);
+    
+    
+    
     /* data.forEach(r => {
         document.write(r.title)
         document.write(r.price)
@@ -58,7 +61,7 @@ function show(data) {
     </tr>`;
         
     });  */
-    for (let i=0;i<10;i++){
+    for (let i=0;i<20;i++){
         tab += `<tr> 
                 <td>${data[i].id} </td>
                 <td>${data[i].title}</td>
@@ -72,6 +75,31 @@ function show(data) {
     };
     document.getElementById('desc').innerHTML=tab
 }
+/* function nextFunction(data){
+    
+    let tab = 
+    `<tr>
+      <th>id</th>
+      <th>title</th>
+      <th>price</th>
+      <th>category</th>
+      <th>rating</th>
+      <th>image</th>
+     </tr>`;
+     for (let i=11;i<20;i++){
+        tab += `<tr> 
+                <td>${data[i].id} </td>
+                <td>${data[i].title}</td>
+                <td>${data[i].price}</td> 
+                <td>${data[i].description}</td>
+                <td>${data[i].category}</td> 
+                <td><img style="width:200px;height:200px;" src="${data[i].image}"/></td> 
+                <td>${data[i].rating.rate}</td>
+                <td>${data[i].rating.count}</td>     
+            </tr>`;
+    };
+    document.getElementById('desc').innerHTML=tab
+} */
 
 
 funcName(url_api)

@@ -49,7 +49,7 @@ class Root extends Component {
         count++;
         const computer = Math.floor(Math.random()*3)+1;        
         console.log(comp);
-        // const result = document.getElementById("result");
+        const result = document.getElementById("result");
         let userData = this.user.getInput();
 
         //1:Rock, 2:Paper, 3:Scissor

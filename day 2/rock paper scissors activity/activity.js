@@ -14,6 +14,8 @@ class Numbers {
     playerinput = 0;
     updateScorecard() {this.scorecard="Player Score : "+this.playerscore+" CPU Score : "+this.cpuscore+" "}
     cpuInput() {this.cpuinput = Math.floor(Math.random()*3)+1}
+    playerwin() {this.playerscore+=1; this.result="Player Wins"; this.updateScorecard()}
+    cpuwin() {this.cpuscore+=1; this.result="CPU Wins"; this.updateScorecard()}
 }
 
 class Third extends Component {
@@ -32,9 +34,9 @@ class Second extends Component {
     <div class="container-sm d-flex flex-column align-items-center">
             <div class="d-flex flex-row">
                 <h2>Player Input : </h2>
-                <button class="btn btn-info mx-3" id="rock" t-on-click="inputrock"><i class="fa-regular fa-hand-back-fist"></i></button>
-                <button class="btn btn-info mx-3" id="paper" t-on-click="inputpaper"><i class="fa-regular fa-hand"></i></button>
-                <button class="btn btn-info mx-3" id="scissor" t-on-click="inputscissor"><i class="fa-regular fa-hand-scissors"></i></button>
+                <button class="btn btn-info mx-3 btn-lg" id="rock" t-on-click="inputrock"><i class="fa-regular fa-hand-back-fist"></i></button>
+                <button class="btn btn-info mx-3 btn-lg" id="paper" t-on-click="inputpaper"><i class="fa-regular fa-hand"></i></button>
+                <button class="btn btn-info mx-3 btn-lg" id="scissor" t-on-click="inputscissor"><i class="fa-regular fa-hand-scissors"></i></button>
             </div>
             <div class="d-flex flex-row">
             <button class="btn btn-success m-3" id="submit" t-on-click="submitanswer">Submit</button>
@@ -46,68 +48,71 @@ class Second extends Component {
 
     setup () {
         this.numlist = finalNumber();
+        onMounted(() => {
+            let submit = document.getElementById("submit");
+            let reset = document.getElementById("reset");
+            let rock = document.getElementById("rock");
+            let paper = document.getElementById("paper");
+            let scissor = document.getElementById("scissor");
+        })
     }
 
     inputrock() {
         this.numlist.playerinput = 1;
-        document.getElementById("submit").disabled=false;
-        document.getElementById("rock").className = "btn btn-success mx-3";
-        document.getElementById("paper").className = "btn btn-info mx-3";
-        document.getElementById("scissor").className = "btn btn-info mx-3";
+        submit.disabled=false;
+        rock.className = "btn btn-success mx-3 btn-lg";
+        paper.className = "btn btn-info mx-3 btn-lg";
+        scissor.className = "btn btn-info mx-3 btn-lg";
     }
     inputpaper() {
         this.numlist.playerinput = 2;
-        document.getElementById("submit").disabled=false;
-        document.getElementById("rock").className = "btn btn-info mx-3";
-        document.getElementById("paper").className = "btn btn-success mx-3";
-        document.getElementById("scissor").className = "btn btn-info mx-3";
+        submit.disabled=false;
+        rock.className = "btn btn-info mx-3 btn-lg";
+        paper.className = "btn btn-success mx-3 btn-lg";
+        scissor.className = "btn btn-info mx-3 btn-lg";
     }
     inputscissor() {
         this.numlist.playerinput = 3;
-        document.getElementById("submit").disabled=false;
-        document.getElementById("rock").className = "btn btn-info mx-3";
-        document.getElementById("paper").className = "btn btn-info mx-3";
-        document.getElementById("scissor").className = "btn btn-success mx-3";
+        submit.disabled=false;
+        rock.className = "btn btn-info mx-3 btn-lg";
+        paper.className = "btn btn-info mx-3 btn-lg";
+        scissor.className = "btn btn-success mx-3 btn-lg";
     }
     
     reset() {
-        document.getElementById("reset").disabled=true;
+        reset.disabled=true;
         this.numlist.cpuInput();
-        document.getElementById("cpu").innerHTML="<i class='fa-regular fa-question'></i>"
+        cpu.innerHTML="<i class='fa-regular fa-question'></i>"
         this.numlist.result="";
-        document.getElementById("rock").className = "btn btn-info mx-3";
-        document.getElementById("paper").className = "btn btn-info mx-3";
-        document.getElementById("scissor").className = "btn btn-info mx-3";
-        document.getElementById("rock").disabled=false;
-        document.getElementById("paper").disabled=false;
-        document.getElementById("scissor").disabled=false;
+        rock.className = "btn btn-info mx-3 btn-lg";
+        paper.className = "btn btn-info mx-3 btn-lg";
+        scissor.className = "btn btn-info mx-3 btn-lg";
+        rock.disabled=false;
+        paper.disabled=false;
+        scissor.disabled=false;
     }
 
     submitanswer() {
-        document.getElementById("submit").disabled=true;
-        document.getElementById("rock").disabled=true;
-        document.getElementById("paper").disabled=true;
-        document.getElementById("scissor").disabled=true;
-        document.getElementById("reset").disabled=false;
+        submit.disabled=true;
+        rock.disabled=true;
+        paper.disabled=true;
+        scissor.disabled=true;
+        reset.disabled=false;
         if(this.numlist.cpuinput==1){
-            document.getElementById("cpu").innerHTML="<i class='fa-regular fa-hand-back-fist'></i>"
+            cpu.innerHTML="<i class='fa-regular fa-hand-back-fist'></i>"
         }
         else if(this.numlist.cpuinput==2){
-            document.getElementById("cpu").innerHTML="<i class='fa-regular fa-hand'></i>"
+            cpu.innerHTML="<i class='fa-regular fa-hand'></i>"
         }
         else{
-            document.getElementById("cpu").innerHTML="<i class='fa-regular fa-hand-scissors'></i>"
+            cpu.innerHTML="<i class='fa-regular fa-hand-scissors'></i>"
         }
         if(this.numlist.playerinput==1){
             if(this.numlist.cpuinput==2){
-                this.numlist.cpuscore+=1;
-                this.numlist.result="CPU Wins";
-                this.numlist.updateScorecard();
+                this.numlist.cpuwin();
             }
             else if(this.numlist.cpuinput==3){
-                this.numlist.playerscore+=1;
-                this.numlist.result="Player Wins";
-                this.numlist.updateScorecard();
+                this.numlist.playerwin();
             }
             else{
                 this.numlist.result="Draw";
@@ -115,14 +120,10 @@ class Second extends Component {
         }
         else if(this.numlist.playerinput==2){
             if(this.numlist.cpuinput==1){
-                this.numlist.playerscore+=1;
-                this.numlist.result="Player Wins";
-                this.numlist.updateScorecard();
+                this.numlist.playerwin();
             }
             else if(this.numlist.cpuinput==3){
-                this.numlist.cpuscore+=1;
-                this.numlist.result="CPU Wins";
-                this.numlist.updateScorecard();
+                this.numlist.cpuwin();
             }
             else{
                 this.numlist.result="Draw";
@@ -130,14 +131,10 @@ class Second extends Component {
         }
         else{
             if(this.numlist.cpuinput==1){
-                this.numlist.cpuscore+=1;
-                this.numlist.result="CPU Wins";
-                this.numlist.updateScorecard();
+                this.numlist.cpuwin();
             }
             else if(this.numlist.cpuinput==2){
-                this.numlist.playerscore+=1;
-                this.numlist.result="Player Wins";
-                this.numlist.updateScorecard();
+                this.numlist.playerwin();
             }
             else{
                 this.numlist.result="Draw";
@@ -163,8 +160,9 @@ class Root extends Component {
     setup () {
         this.numlist = finalNumber();
         onMounted(() => {
-            document.getElementById("submit").disabled = true;
-            document.getElementById("reset").disabled=true;
+            let cpu = document.getElementById("cpu");
+            submit.disabled = true;
+            reset.disabled=true;
             this.numlist.cpuInput();
         })
        

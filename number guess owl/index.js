@@ -5,7 +5,7 @@ class Input extends Component{
     <h2><t t-esc = "props.values.suggester"/></h2>
     <h2><t t-esc = "props.values.count"/></h2>
     `  
-    static props = ["values"]  
+    static props=["values"]  
 }
 
 class Counter extends Component{

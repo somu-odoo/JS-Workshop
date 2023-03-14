@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Guess The Number</title>
+    </head>    
+    <body>
+        <form>
+            <input type="text" id="guessNumber" placeholder="Enter a number"/>
+            <input type="submit" id="submit" value="Submit" />
+        </form>
+        <script type="text/javascript">
+            var y = Math.floor(Math.random() * 10 + 1);
+            var count=0;
+            document.getElementById("submit").onclick = function() {
+                var num=document.getElementById("guessNumber").value
+                if(num==y){
+                    count++;
+                    alert("Congrats!!, you guess number in ", + count + "trails")
+                }else if(num > y){
+                    count++;
+                    alert("try smaller one")
+                }else{
+                    count++;
+                    alert("try bigger one")
+                }
+            }
+        </script>
+    </body>
+</html>

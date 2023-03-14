@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Product</title>
+    </head>    
+    <body>
+        <table id="fetchRespone" border="1"></table>
+        <div align="center">
+            <button id="pre">Previous</button>
+            <button id="next">Next</button>
+        </div>
+        <script type="text/javascript">
+            async function getData(){
+               const response = await fetch("https://fakestoreapi.com/products")
+               var data = await response.json()
+               console.log(data);
+               show(data)
+            }
+            function show(data){
+                let res = `<tr>
+                    <th>ID</th>
+                    <th>Desc</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Rating Count</th>
+                    <th>Rating Rate</th>
+                    </tr>`;
+                for(let i of data.slice(0,10)){
+                    res+=`<tr>
+                        <td>${i.id}</td>
+                        <td>${i.description}</td>
+                        <td>${i.price}</td>
+                        <td>${i.category}</td>
+                        <td><img src='${i.image}' style='height:40px'/></td>
+                        <td>${i.title}</td>
+                        <td>${i.rating.count}</td>
+                        <td>${i.rating.rate}</td>
+                        </tr>`;
+                }
+                document.getElementById('fetchRespone').innerHTML=res;
+            }
+            getData()
+        </script>
+    </body>
+</html>7

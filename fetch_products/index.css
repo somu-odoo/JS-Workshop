@@ -8,7 +8,7 @@ body{
     font-weight: 300;
 }
 
-#btn{
+.btn{
     background-color: darkcyan;
     color: white;
     outline: none;

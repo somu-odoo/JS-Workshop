@@ -1,10 +1,21 @@
+let firstTen
+let secondTen
+const list = document.getElementById("container")
+
 async function fetchProducts(){
     const res = await fetch("https://fakestoreapi.com/products")
     const data = await res.json()
-    const list = document.getElementById("container")
+    return data
+}
 
-    const firstTen = data.slice(0,10)
-    firstTen.forEach(ele => {
+fetchProducts().then((data) => {
+    firstTen = data.slice(0,10)
+    secondTen = data.slice(10,20)
+})
+
+function showFirstTen(items){
+    
+    items.forEach(ele => {
         const div = document.createElement("div")
         div.classList.add("card")
         list.appendChild(div)
@@ -27,9 +38,17 @@ async function fetchProducts(){
         h3.style.fontWeight = "300"
         h3.innerHTML = `Price: &#36;${ele.price}`
         div.appendChild(h3)
-        console.log(ele)
     })
 }
 
-const button = document.getElementById("btn")
-button.onclick = fetchProducts
+const btn1 = document.getElementById("btn1")
+const btn2 = document.getElementById("btn2")
+btn1.onclick = () => {
+    list.innerHTML = ""
+    showFirstTen(firstTen)
+}
+
+btn2.onclick = () => {
+    list.innerHTML = ""
+    showFirstTen(secondTen)
+}

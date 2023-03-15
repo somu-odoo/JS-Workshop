@@ -1,0 +1,22 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(135, 110, 223, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    background-color: rgb(89, 78, 78);
+  }
+  
+  .price {
+    color: rgb(222, 102, 102);
+    font-size: 22px;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  
+  

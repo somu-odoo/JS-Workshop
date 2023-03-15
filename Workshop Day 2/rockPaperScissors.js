@@ -54,7 +54,7 @@ class Input extends Component {
 
 class Root extends Component {
   static template = xml`
-    <div style="text-align:center">
+    <div style="text-align:center; margin-top:200px" >
       <h1>Rock Paper Scissors</h1>
       <Input />
       <div></div><br/>

@@ -14,17 +14,21 @@ const newData = () => {
 class dlist {
     uscore = 0;
     cscore = 0;
+    tscore = 0;
     updateUscore() { this.uscore++; }
+    updateTscore(){ this.tscore++; }
     getUscore() { return this.uscore }
     updateCscore() { this.cscore++; }
     getCscore() { return this.cscore }
 }
 
 class Score extends Component {
-    static template = xml`<t t-esc="props.details"/>  `
-    static props = ["details"]
+    static template = xml`<t t-esc="props.details"/> <br/> User: <t t-esc="props.det1"/> <br/> CPU: <t t-esc="props.det2"/> `
+    static props = ["details", "det1", "det2"]
     setup() {
-        this.data='';
+        this.data = '';
+        this.d1 = '';
+        this.d2 = '';
         this.cap = finalData();
     }
 }
@@ -33,10 +37,12 @@ class Display extends Component {
     static template = xml`<button t-on-click="game" id="1">Stone</button> 
     <button t-on-click="game" id="2">Paper</button> 
     <button t-on-click="game" id="3">Scissors</button>
-    <Score details="data" />`;
+    <Score details="data" det1="d1" det2="d2" />`;
 
     setup() {
         this.data = '';
+        this.d1 = '';
+        this.d2 = '';
         this.cap = finalData();
 
     }
@@ -46,38 +52,43 @@ class Display extends Component {
         console.log(x)
         var uinput = event.target.id;
         if (uinput == x) {
-            console.log("Tie")
+            this.data = "Tie";
+            this.cap.updateTscore()
         }
-        else if (uinput == 1) {
+        else if ((uinput != x) && (uinput == 1)) {
             if (x == 2) {
                 this.data = "cpu win";
                 this.cap.updateCscore();
+                this.d2 = `${this.cap.getCscore()}`;
             }
             else {
                 this.data = "user win";
                 this.cap.updateUscore();
+                this.d1 = `${this.cap.getUscore()}`;
             }
         }
         else if (uinput == 2) {
             if (x == 1) {
                 this.data = "user win";
                 this.cap.updateUscore();
+                this.d1 = `${this.cap.getUscore()}`;
             }
             else {
                 this.data = "cpu win";
                 this.cap.updateCscore();
-
+                this.d2 = `${this.cap.getCscore()}`;
             }
         }
-        else {
+        else if (uinput == 3) {
             if (x == 1) {
                 this.data = "cpu win";
                 this.cap.updateCscore();
-
+                this.d2 = `${this.cap.getCscore()}`;
             }
             else {
-                this.data = `user win${this.cap.getUscore()}`;
+                this.data = "user win";
                 this.cap.updateUscore();
+                this.d1 = `${this.cap.getUscore()}`;
             }
         }
     }

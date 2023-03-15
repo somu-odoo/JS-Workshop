@@ -9,12 +9,22 @@ const finalData = () =>{
 }
 class WriteText{
 
-    computerGuess = Math.floor((Math.random()*3) + 1);
+    computerGuess = 0;
     userInput = "";
     result = ""
     userWon = 0;
     computerWon = 0;
     random = "";
+
+    guess()
+    {
+        this.computerGuess = Math.floor((Math.random()*3) + 1);
+    }
+
+    getGuess()
+    {
+        return this.computerGuess;
+    }
 
    updateUser()
    {
@@ -55,7 +65,7 @@ class First extends Component{
     {   
         this.first.userInput = "Rock"
 
-        if(this.first.computerGuess == 1){
+        if(this.first.getGuess() == 1){
             this.first.result = "You Won!!!"
             this.first.updateUser();
         }
@@ -64,6 +74,7 @@ class First extends Component{
             this.first.updateComputer();
         }
         
+        this.first.guess();
         console.log(this.first.computerGuess);
     }
 
@@ -71,7 +82,7 @@ class First extends Component{
     {   
         this.first.userInput = "Paper"
 
-        if(this.first.computerGuess == 2){
+        if(this.first.getGuess() == 2){
             this.first.result = "You Won!!!"
             this.first.updateUser();
 
@@ -81,13 +92,15 @@ class First extends Component{
             this.first.updateComputer();
 
         }
+        this.first.guess();
+
     }
 
     clickScissor()
     {   
         this.first.userInput = "Scissor"
 
-        if(this.first.computerGuess == 3){
+        if(this.first.getGuess() == 3){
             this.first.result = "You Won!!!"
             this.first.updateUser();
 
@@ -96,6 +109,8 @@ class First extends Component{
             this.first.result = "You Lose!!!"
             this.first.updateComputer();
         }
+
+        this.first.guess();
 
     }
 
@@ -103,6 +118,7 @@ class First extends Component{
     setup(){
 
         this.first = finalData();
+        this.first.guess();
 
     }
 
@@ -140,6 +156,7 @@ class Root extends Component{
     <First />
     <Second />
     <div>
+    <br/>
         <b>score-card <t t-esc = "this.root.getUser()"/> <t t-esc = "this.root.getComputer()"/></b>
     </div>
     </div>

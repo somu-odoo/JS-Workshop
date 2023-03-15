@@ -21,8 +21,30 @@ class Second extends Component {
     <t t-esc="this.bottle.getCount()" /><br/>`;
 
     setup() {
+
+
+        // onWillStart(
+        //     () => console.log("onWillStart2"));
+        onMounted(
+            () => console.log("onMounted2"));
+        // onWillPatch(
+        //     () => console.log("onWillPatch2"));
+        // onPatched(
+        //     () => console.log("onPatched2"));
+        // onWillRender(
+        //     () => console.log("onWillRender2"));
+        // onRendered(
+        //     () => console.log("onRendered2"));
+        // onWillUnmount(
+        //     () => console.log("onWillUnmount2"));
+        // onWillDestroy(
+        //     () => console.log("onWillDestroy"));
+        // onError(
+        //     (e) => console.log("onError", e.cause));
+
         this.bottle = finalData();
     }
+
     static props = ["fruit", "cafeItems"];
 }
 class Root extends Component {

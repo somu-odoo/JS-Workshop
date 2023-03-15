@@ -1,4 +1,4 @@
-const { Component, mount, xml, onWillStart, onMounted, onWillPatch, onPatched, onWillRender, onRendered, onWillUnmount, onWillDestroy, onError, useState, reactive, useEnv } = owl;
+const { Component, mount, xml, useState, reactive, useEnv } = owl;
 let num = Math.floor(Math.random() * 11);
 console.log(num);
 
@@ -10,10 +10,13 @@ const finalData = () => {
 
 class index {
     count = 0;
-    updateCount() { this.count++; };
-    getCount() { return this.count };
+    updateCount() { this.count++; }
+    getCount() { return this.count }
 }
 
+const createData = () => {
+    return reactive(new index)
+}
 
 class Second extends Component {
     static template = xml`
@@ -39,12 +42,14 @@ class Root extends Component {
     <button t-on-click="clickMe">Check</button>`;
 
     setup() {
+        this.a = 2;
         this.key = finalData();
     }
 
     static components = { Second };
 
     clickMe() {
+        console.log(this.a);
         this.key.updateCount();
         let input_field = document.getElementById("guess");
         let input_num = document.getElementById("guess").value;
@@ -63,9 +68,6 @@ class Root extends Component {
     }
 }
 
-const createData = () => {
-    return reactive(new index)
-}
 
 const env = { store: createData() }
 mount(Root, document.body, { dev: true, env });

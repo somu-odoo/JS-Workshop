@@ -1,0 +1,19 @@
+.pro{
+    
+    width: 500px;
+    border-radius: 5px;
+    margin: 30px;
+    /* text-align: center; */
+    /* display: inline-block; */
+
+}
+h1{
+    display: inline-block;
+
+}
+#next{
+    background-color: hsla(125, 100%, 47%, 0.678);
+    height: 30px;
+    width: 50px;
+    border: 1px solid  hsla(125, 100%, 47%, 0.678);
+}

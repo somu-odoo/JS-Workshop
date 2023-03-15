@@ -1,0 +1,35 @@
+.prod {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 500px;
+    border-radius: 5px;
+    margin: 30px;
+    text-align: center;
+    text-decoration: solid;
+    font-weight: bold;
+     /* 5px rounded corners */
+
+  }
+  
+  /* Add rounded corners to the top left and the top right corner of the image */
+  img {
+    border-radius: 15px 5px 0 0;
+    margin:130px;
+  }
+
+#item{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    flex-basis: 100%;
+    margin: 30px;
+
+    
+}
+#previousbtn{
+  margin: 100px;
+}
+#nextbtn{
+  margin-left: 1000px;
+}

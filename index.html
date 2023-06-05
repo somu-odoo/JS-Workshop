@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Bootstrap CSS -->
+		<!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+		/>
+
+		<!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+		<!-- https://cdnjs.com/libraries/font-awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		/>
+        <link rel="stylesheet" href="./style.css">
+		<title>Game</title>
+	</head>
+	<body >
+
+        
+        <div class="container vh-100" style="background-color: #F6F1F1;">
+            
+            <div id="top" class="d-flex">
+                <h6 class="pt-2 fs-4">
+                    <span class="text-decoration-underline">Total Guess:</span> 
+                    <span id="total_guesses">0</span> 
+                </h6>
+                <h3 class="mx-auto text-decoration-underline">Guess The Number (0 to 100)</h3>
+                <div class="clear"></div>
+            </div>
+
+            <div id="middle">
+                <div class="row">
+                    <div id="suggestion_text" class="col-6 text-center fs-1" style="text-align: center;
+                    vertical-align: middle;
+                    line-height: 450px; ">
+                        Suggestion Will Appear Here...
+                        <!-- Some Text will appear Here -->
+                    </div>
+                    <div class="col-6" id="arrow">
+                        <div class="" id="oncemore">
+                            <img src="./once_more.jpg" alt="Once More">
+                        </div>
+                        <div id="bandkar">
+                            <img src="./band kar band kar.jpeg" alt="Once More">
+                        </div>
+                        <div id="dimag">
+                            <img src="./hoshiyar.png" alt="Once More">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guess_here">
+                <form class="d-flex justify-content-center">
+                    <input type="number" class="form-control w-25 mx-2" id="numberInput" value="0">
+
+                    <button class="btn btn-outline-success" type="button" id="guess">Guess</button>
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Optional JavaScript; choose one of the two! -->
+        <script src="./app.js"></script>
+		<!-- Option 1: Bootstrap Bundle with Popper -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Option 2: Separate Popper and Bootstrap JS -->
+
+		<!-- https://cdnjs.com/libraries/popper.js/2.5.4 -->
+		<!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"
+    ></script> -->
+
+		<!-- More: https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
+	</body>
+</html>

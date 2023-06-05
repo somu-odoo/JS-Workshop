@@ -1,0 +1,40 @@
+.clear{
+    clear: both;
+}
+#oncemore{
+    display: none;
+    /* float: right; */
+    /* border: 2px solid yellow; */
+}
+#oncemore img{
+    margin: 0 50px;
+    padding: 50px;
+    /* border: 2px solid red; */
+}
+#dimag{
+    display: none;
+    
+    /* float: right; */
+    /* border: 2px solid yellow; */
+}
+#dimag img{
+    margin: 0 50px;
+    padding: 75px;
+    width: 85%;
+
+}
+#bandkar{
+    display: none;
+    /* border: 2px solid yellow; */
+    overflow: hidden;
+}
+#bandkar img{
+    width: 75%;
+    margin: 0 50px;
+    padding: 50px;
+    /* border: 2px solid red; */
+}
+
+#middle{
+    height: 600px;
+}

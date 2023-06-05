@@ -1,0 +1,18 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 50px;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+  }
+  
+  #guess-input {
+    margin-top: 20px;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }

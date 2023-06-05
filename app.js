@@ -5,6 +5,10 @@ let total_guess = 0
 button.addEventListener("click",()=>{
     let guessed_number = document.getElementById("numberInput").value;
     let suggestion_box = document.getElementById("suggestion_text");
+    if(guessed_number===""){
+        alert("Enter Valid Input...")
+        return;
+    }
     total_guess++;
 
     document.getElementById("total_guesses").innerHTML = total_guess;

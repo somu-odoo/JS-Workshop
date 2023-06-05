@@ -1,0 +1,34 @@
+body {
+    text-align: center;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("https://wallpaperaccess.com/full/2312654.jpg");
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 0.5em;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%);
+}
+#id1 input[type="number"]{
+    width: 10%;
+    margin: 10px;
+    font-size: 15px;
+    border-color: black;
+    border-width: 4px;    
+}
+#id3{
+   margin: 2rem;
+   font-size: 20px;
+   font-style:italic;
+   font-weight: bold;
+
+}
+#id4{
+    margin: 2rem;
+    font-style: oblique;
+}
